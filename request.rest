@@ -1,0 +1,30 @@
+###
+GET http://localhost:3000/users
+###
+GET http://localhost:3000/users/6
+###
+POST http://localhost:3000/users HTTP/1.1
+content-type: application/json
+
+{
+    "username": "a",
+    "email": "c",
+    "password": "a",
+    "phoneNumber": "1",
+    "birth": "05-05-05",
+    "address": "a"
+}
+###
+PATCH  http://localhost:3000/users/6
+content-type: application/json
+
+{
+    "username": "Gathfan",
+    "email": "Gathfan@gmail.com",
+    "password": "12345678",
+    "phoneNumber": "12345678",
+    "birth": "05-05-05",
+    "address": "lorem"
+}
+###
+DELETE http://localhost:3000/users/1
