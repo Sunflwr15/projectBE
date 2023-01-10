@@ -1,19 +1,13 @@
 import { Sequelize } from "sequelize";
-import mysql from "mysql";
-const db = new Sequelize(
-  "chargeradmindb",
-  "gathfanlikesyou",
-  "gathfanlikesyou15",
-  {
-    host: "db4free.net",
-    dialect: "mysql",
-  }
-);
-// const db = mysql.createPool({
-//   host: "localhost",
-//   user: "id20091991_admincharger",
-//   password: "Nabilgathfan15_",
-//   database: "id20091991_adminchargerdb",
-//   multipleStatements: true,
-// });
+const DB = {
+  database: "railway",
+  username: "root",
+  password: "vNbcLE01ZR56M3mPntlT",
+  host: "containers-us-west-54.railway.app",
+};
+const db = new Sequelize(DB.database, DB.username, DB.password, {
+  host: DB.host,
+  dialect: "mysql",
+  port: 5661
+});
 export default db;

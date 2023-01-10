@@ -16,7 +16,19 @@ export const getUserById = async (req, res) => {
     const response = await User.findOne({
       where: { id: req.params.id },
     });
-    res.status(200).json(response);
+    if (response == null) {
+      res.status(200).json({
+        status: 422,
+        msg: "User not found",
+        data: response,
+      });
+    } else {
+      res.status(200).json({
+        status: 200,
+        msg: "User found",
+        data: response,
+      });
+    }
   } catch (error) {
     console.log(error.message);
   }
@@ -58,17 +70,21 @@ export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({
-      where: { email: email },
+      where: { email: email, password: password },
     });
     if (user === null) {
-      res.status(422).json({ msg: "Email & Password tidak terdaftar" });
+      res
+        .status(422)
+        .json({ msg: "Email & Password tidak terdaftar", user: user });
     }
-    if (user.password === null) {
-      res.status(422).json({ msg: "Password tidak cocok" });
+    if (user.password == null) {
+      res
+        .status(422)
+        .json({ msg: "Password tidak cocok", user: user.password });
     }
     return res
       .status(200)
-      .json({ status: "Success", msg: "Login Berhasil", User: user });
+      .json({ status: "Success", msg: "Login Berhasil", user: user });
   } catch (error) {
     console.log(error.message);
   }

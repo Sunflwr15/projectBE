@@ -1,7 +1,7 @@
 ###
 GET http://localhost:3000/users
 ###
-GET http://localhost:3000/users/6
+GET http://localhost:3000/users/1
 ###
 POST http://localhost:3000/users HTTP/1.1
 content-type: application/json
@@ -15,12 +15,12 @@ content-type: application/json
     "address": "a"
 }
 ###
-PATCH  http://localhost:3000/users/6
+PATCH  http://localhost:3000/users/1
 content-type: application/json
 
 {
-    "username": "Gathfan",
-    "email": "Gathfan@gmail.com",
+    "username": "axiovela",
+    "email": "axe@gmail.com",
     "password": "12345678",
     "phoneNumber": "12345678",
     "birth": "05-05-05",
@@ -34,6 +34,26 @@ PATCH http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "Gathfan@gmail.com",
+    "email": "axe@gmail.com",
     "password": "12345678"
 }
+
+
+# CAR ENDPOINT
+
+###
+GET http://localhost:3000/car
+
+###
+PATCH http://localhost:3000/car
+Content-Type: application/json
+
+{
+    "carName": "Honda",
+    "carType": "Brio",
+    "carColor": "Red",
+    "plateNumber":  123456
+}
+
+###
+DELETE http://localhost:3000/car/2
